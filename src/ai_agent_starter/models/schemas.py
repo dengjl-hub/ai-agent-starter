@@ -146,7 +146,8 @@ class CodeIssue(BaseModel):
 
     severity: Severity = Field(description="严重程度")
     category: str = Field(
-        description="问题类别：security / performance / style / bug / best_practice"
+        default="best_practice",
+        description="问题类别：security / performance / style / bug / best_practice；模型未提供时默认为 best_practice",
     )
     line: int | None = Field(default=None, description="问题所在行号")
     description: str = Field(description="问题描述")

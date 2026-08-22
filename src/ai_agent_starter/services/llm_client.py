@@ -22,7 +22,7 @@ from typing import Any, TypeVar
 
 from openai import AsyncOpenAI
 from openai.types.chat import ChatCompletion
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from ai_agent_starter.config import Settings, get_settings
 from ai_agent_starter.models.schemas import (
@@ -307,8 +307,9 @@ class LLMClient:
     ) -> T:
         """结构化输出：强制 LLM 返回符合 Pydantic 模型的 JSON。
 
-        实现方式：使用 OpenAI 的 response_format + JSON Schema，
-        并用 Pydantic 校验返回结果。这比"在 prompt 里说请返回 JSON"可靠得多。
+        实现方式：使用 OpenAI 兼容接口的 JSON Object 模式，
+        并用 Pydantic 校验返回结果。JSON Object 模式比 JSON Schema
+        在不同兼容服务商上的支持更广。
 
         Args:
             response_model: Pydantic 模型类，定义期望的输出结构
@@ -316,35 +317,39 @@ class LLMClient:
         use_model = model or self.settings.llm_model
         sdk_messages = self._to_sdk_messages(messages)
 
-        # 构造 JSON Schema
-        schema = response_model.model_json_schema()
-        schema_name = response_model.__name__
+        request_messages = list(sdk_messages)
+        for attempt in range(2):
+            completion = await self.client.chat.completions.create(
+                model=use_model,
+                messages=request_messages,
+                response_format={"type": "json_object"},
+                temperature=0.1,  # 结构化输出用低温度更稳定
+                max_tokens=self.settings.max_tokens,
+            )
 
-        completion = await self.client.chat.completions.create(
-            model=use_model,
-            messages=sdk_messages,
-            response_format={
-                "type": "json_schema",
-                "json_schema": {
-                    "name": schema_name,
-                    "strict": True,
-                    "schema": {
-                        **schema,
-                        "additionalProperties": False,
-                    },
-                },
-            },
-            temperature=0.1,  # 结构化输出用低温度更稳定
-            max_tokens=self.settings.max_tokens,
-        )
+            usage = self._parse_usage(completion)
+            cost = self._calc_cost(use_model, usage)
+            await self.tracker.record(use_model, usage, cost, endpoint=endpoint)
 
-        usage = self._parse_usage(completion)
-        cost = self._calc_cost(use_model, usage)
-        await self.tracker.record(use_model, usage, cost, endpoint=endpoint)
-
-        content = completion.choices[0].message.content or "{}"
-        data = json.loads(content)
-        return response_model.model_validate(data)
+            content = completion.choices[0].message.content or "{}"
+            try:
+                data = json.loads(content)
+                return response_model.model_validate(data)
+            except (json.JSONDecodeError, ValidationError) as error:
+                if attempt == 1:
+                    raise
+                request_messages.extend(
+                    [
+                        {"role": "assistant", "content": content},
+                        {
+                            "role": "user",
+                            "content": (
+                                "上一次返回未通过结构校验。请只返回修正后的 JSON，"
+                                f"确保完全符合要求。具体错误：{error}"
+                            ),
+                        },
+                    ]
+                )
 
     async def code_review(self, code: str, language: str = "python") -> CodeReviewResult:
         """代码审查（结构化输出的具体应用场景）。
@@ -357,7 +362,9 @@ class LLMClient:
                 content=(
                     "你是一位资深代码审查专家。请对用户提供的代码进行严格审查，"
                     "从安全性、性能、代码风格、潜在bug、最佳实践等维度找出问题。"
-                    "务必返回结构化的 JSON 结果。"
+                    "务必返回结构化的 JSON 结果。每个 issues 元素必须包含 severity、"
+                    "category、line、description、suggestion、code_snippet；category "
+                    "只能是 security、performance、style、bug 或 best_practice。"
                 ),
             ),
             ChatMessage(

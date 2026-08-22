@@ -206,6 +206,22 @@ class TestChatWithTools:
 
 
 class TestStructuredChat:
+    def test_code_issue_category_defaults_when_omitted(self):
+        issue = CodeReviewResult.model_validate(
+            {
+                "summary": "需要改进",
+                "issues": [
+                    {
+                        "severity": "high",
+                        "description": "存在问题",
+                        "suggestion": "修复问题",
+                    }
+                ],
+            }
+        ).issues[0]
+
+        assert issue.category == "best_practice"
+
     @pytest.mark.asyncio
     async def test_code_review_structured(self, client):
         """测试结构化输出解析。"""
@@ -235,6 +251,51 @@ class TestStructuredChat:
         assert result.score == 60
         assert len(result.issues) == 1
         assert result.issues[0].category == "security"
+
+        call_kwargs = client.client.chat.completions.create.call_args.kwargs
+        assert call_kwargs["response_format"] == {"type": "json_object"}
+
+    @pytest.mark.asyncio
+    async def test_structured_chat_retries_invalid_response(self, client):
+        invalid_json = json.dumps(
+            {
+                "summary": "需要改进",
+                "score": 50,
+                "issues": [{"severity": "high", "description": "缺少类别"}],
+            }
+        )
+        valid_json = json.dumps(
+            {
+                "summary": "已修正",
+                "score": 80,
+                "issues": [
+                    {
+                        "severity": "high",
+                        "category": "bug",
+                        "description": "问题",
+                        "suggestion": "修复",
+                    }
+                ],
+            }
+        )
+        client.client.chat.completions.create = AsyncMock(
+            side_effect=[
+                make_mock_completion(content=invalid_json),
+                make_mock_completion(content=valid_json),
+            ]
+        )
+
+        result = await client.structured_chat(
+            [ChatMessage(role=ChatRole.USER, content="返回审查结果")],
+            CodeReviewResult,
+        )
+
+        assert result.score == 80
+        assert client.client.chat.completions.create.await_count == 2
+        retry_messages = client.client.chat.completions.create.call_args_list[1].kwargs[
+            "messages"
+        ]
+        assert "未通过结构校验" in retry_messages[-1]["content"]
 
 
 class TestMessageConversion:

@@ -78,6 +78,15 @@ async def main():
     console.print(f"\n[Q] 它们各自的使用场景是什么？")
     console.print(f"[A] {resp2.message.content}")
 
+    # 第三轮（独立问题）
+    user_question = "广西2026年洪水是什么时候？"
+    messages.append(
+        ChatMessage(role=ChatRole.USER, content=user_question)
+    )
+    resp2 = await client.chat(messages)
+    console.print(f"\n[Q] {user_question}")
+    console.print(f"[A] {resp2.message.content}")
+
     # ---- 3. 成本汇总 ----
     console.print("\n[bold yellow]=== 3. 成本汇总 ===[/bold yellow]")
     summary = get_token_tracker().get_summary()

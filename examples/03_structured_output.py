@@ -5,7 +5,7 @@
 
 学习目标（W2）：
 - 理解为什么"在 prompt 里说请返回 JSON"不可靠
-- 学会用 response_format + JSON Schema 强制结构化输出
+- 学会用 response_format 的 JSON Object 模式生成结构化输出
 - 用 Pydantic 模型校验 LLM 输出
 - 代码审查场景的实际应用
 """
@@ -107,7 +107,10 @@ async def main():
     # 展示原始 JSON（验证输出确实是结构化的）
     console.print("\n[bold yellow]原始 JSON 输出（前500字符）:[/bold yellow]")
     json_str = result.model_dump_json(indent=2)
-    console.print_json(json_str[:500] + ("..." if len(json_str) > 500 else ""))
+    if len(json_str) <= 500:
+        console.print_json(json_str)
+    else:
+        console.print(json_str[:500] + "...")
 
 
 if __name__ == "__main__":

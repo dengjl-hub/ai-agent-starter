@@ -416,7 +416,7 @@ python examples/03_structured_output.py
 - 用 Rich 表格渲染结果
 
 **学习重点**：
-- `response_format` + JSON Schema 强制结构化输出
+- `response_format` 的 JSON Object 模式生成结构化输出
 - Pydantic 模型校验 LLM 返回
 - 这是 W9-W16 旗舰项目（代码审查 Multi-Agent）的雏形
 
@@ -478,7 +478,7 @@ python examples/05_cost_control.py
 | 2 | `services/token_tracker.py` | Token 用量追踪与持久化 |
 | 3 | `services/tools.py` | Function Calling 工具定义与注册 |
 | 4 | `services/llm_client.py` → `chat_with_tools()` | **核心**：Agent 多轮工具调用循环 |
-| 5 | `services/llm_client.py` → `structured_chat()` | JSON Schema 结构化输出 |
+| 5 | `services/llm_client.py` → `structured_chat()` | JSON Object + Pydantic 结构化输出 |
 | 6 | `services/llm_client.py` → `smart_chat()` | 模型路由（降本增效） |
 | 7 | `examples/04_prompt_patterns.py` | Prompt Engineering 模式 |
 | 8 | `tests/test_llm_client.py` | 如何 mock LLM 调用做单元测试 |

@@ -14,7 +14,7 @@
 | W1 | 单元测试（pytest + mock） | `tests/` |
 | W2 | OpenAI 兼容 SDK 多模型切换 | `services/llm_client.py` |
 | W2 | Function Calling（Agent 最小内核） | `services/tools.py`、`llm_client.py` |
-| W2 | 结构化输出（JSON Schema） | `models/schemas.py`、`routes_structured.py` |
+| W2 | 结构化输出（JSON Object + Pydantic） | `models/schemas.py`、`routes_structured.py` |
 | W2 | Prompt Engineering 五种模式 | `examples/04_prompt_patterns.py` |
 | W2 | Token 成本控制与模型路由 | `services/token_tracker.py`、`examples/05_cost_control.py` |
 

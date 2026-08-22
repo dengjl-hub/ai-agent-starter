@@ -90,6 +90,9 @@ async def main():
     # 场景 5：不需要工具的问题（LLM 直接回答）
     await ask_agent(client, "什么是面向对象编程？")
 
+    # 场景 6：需要工具的问题（LLM 回答）,看起来不行
+    await ask_agent(client, "帮看看2026年7月广西洪涝灾害？")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
