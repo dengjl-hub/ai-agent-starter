@@ -1,0 +1,29 @@
+User: dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ uv pip install -e ".[dev]"
+bash: uv: command not found
+
+GitHub Copilot: 
+
+User: dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ uv pip install -e ".[dev]"
+bash: uv: command not found
+
+GitHub Copilot: 这是因为当前 Codespace/容器里没有安装 `uv`，或它尚未加入 `PATH`。执行：
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source "$HOME/.local/bin/env"
+uv --version
+```
+
+然后在项目目录运行：
+
+```bash
+uv venv
+source .venv/bin/activate
+uv pip install -e ".[dev]"
+```
+
+如果 `source "$HOME/.local/bin/env"` 找不到文件，重新打开一个终端后再执行 `uv --version`。也可以临时使用：
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
