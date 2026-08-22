@@ -1,0 +1,641 @@
+tests/test_llm_client.py::TestChatWithTools::test_tool_call_executed PASSED      [ 45%]
+tests/test_llm_client.py::TestChatWithTools::test_max_turns_reached PASSED       [ 47%]
+tests/test_llm_client.py::TestStructuredChat::test_code_review_structured PASSED [ 50%]
+tests/test_llm_client.py::TestMessageConversion::test_to_sdk_messages PASSED     [ 52%]
+tests/test_token_tracker.py::test_record_and_summary PASSED                      [ 55%]
+tests/test_token_tracker.py::test_multiple_records PASSED                        [ 57%]
+tests/test_token_tracker.py::test_persistence PASSED                             [ 60%]
+tests/test_token_tracker.py::test_empty_summary PASSED                           [ 62%]
+tests/test_token_tracker.py::test_reset PASSED                                   [ 65%]
+tests/test_tools.py::TestCalculator::test_basic_addition PASSED                  [ 67%]
+tests/test_tools.py::TestCalculator::test_complex_expression PASSED              [ 70%]
+tests/test_tools.py::TestCalculator::test_power PASSED                           [ 72%]
+tests/test_tools.py::TestCalculator::test_invalid_characters PASSED              [ 75%]
+tests/test_tools.py::TestCalculator::test_division_by_zero PASSED                [ 77%]
+tests/test_tools.py::TestGetTime::test_returns_time_string PASSED                [ 80%]
+tests/test_tools.py::TestGetSystemInfo::test_returns_system_info PASSED          [ 82%]
+tests/test_tools.py::TestToolRegistry::test_all_tools_have_schema PASSED         [ 85%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_all PASSED          [ 87%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_selected PASSED     [ 90%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_unknown_ignored PASSED [ 92%]
+tests/test_tools.py::test_execute_unknown_tool PASSED                            [ 95%]
+tests/test_tools.py::test_execute_calculator_tool PASSED                         [ 97%]
+tests/test_tools.py::test_execute_tool_with_bad_args PASSED                      [100%]
+
+================================== 40 passed in 4.55s ==================================
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ pythonn
+bash: pythonn: command not found
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python
+Python 3.12.13 (main, Apr 10 2026, 13:58:11) [GCC 15.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quit()
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ cp .env.example .env
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python --version
+Python 3.12.13
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python -c "from ai_agent_starter.main import app; print('FastAPI 应用加载成功')"
+FastAPI 应用加载成功
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python -c "from ai_agent_starter.main import app; print('FastAPI 应用加载成功')"
+FastAPI 应用加载成功
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python -c "
+from ai_agent_starter.config import get_settings
+s = get_settings()
+print(f'Base URL: {s.llm_base_url}')
+print(f'Model: {s.llm_model}')
+print(f'API Key 已配置: {bool(s.llm_api_key)}')
+"
+Base URL: https://api.deepseek.com
+Model: deepseek-chat
+API Key 已配置: True
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ pytest -v
+================================= test session starts ==================================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0 -- /workspaces/ai-agent-starter/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /workspaces/ai-agent-starter
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0, anyio-4.14.2, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 40 items                                                                     
+
+tests/test_api.py::TestHealthEndpoint::test_health PASSED                        [  2%]
+tests/test_api.py::TestHealthEndpoint::test_openapi_docs_available PASSED        [  5%]
+tests/test_api.py::TestChatEndpoint::test_chat_basic PASSED                      [  7%]
+tests/test_api.py::TestChatEndpoint::test_chat_empty_messages_rejected PASSED    [ 10%]
+tests/test_api.py::TestChatEndpoint::test_chat_invalid_temperature PASSED        [ 12%]
+tests/test_api.py::TestCostEndpoint::test_cost_summary PASSED                    [ 15%]
+tests/test_api.py::TestStructuredEndpoint::test_code_review_endpoint PASSED      [ 17%]
+tests/test_api.py::TestStructuredEndpoint::test_smart_chat_endpoint PASSED       [ 20%]
+tests/test_config.py::test_settings_defaults PASSED                              [ 22%]
+tests/test_config.py::test_settings_pricing PASSED                               [ 25%]
+tests/test_config.py::test_settings_validation PASSED                            [ 27%]
+tests/test_config.py::test_get_settings_cached PASSED                            [ 30%]
+tests/test_llm_client.py::TestCostCalculation::test_cost_calc_known_model PASSED [ 32%]
+tests/test_llm_client.py::TestCostCalculation::test_cost_calc_unknown_model PASSED [ 35%]
+tests/test_llm_client.py::TestChat::test_chat_basic PASSED                       [ 37%]
+tests/test_llm_client.py::TestChat::test_chat_with_system_message PASSED         [ 40%]
+tests/test_llm_client.py::TestChatWithTools::test_no_tool_call_needed PASSED     [ 42%]
+tests/test_llm_client.py::TestChatWithTools::test_tool_call_executed PASSED      [ 45%]
+tests/test_llm_client.py::TestChatWithTools::test_max_turns_reached PASSED       [ 47%]
+tests/test_llm_client.py::TestStructuredChat::test_code_review_structured PASSED [ 50%]
+tests/test_llm_client.py::TestMessageConversion::test_to_sdk_messages PASSED     [ 52%]
+tests/test_token_tracker.py::test_record_and_summary PASSED                      [ 55%]
+tests/test_token_tracker.py::test_multiple_records PASSED                        [ 57%]
+tests/test_token_tracker.py::test_persistence PASSED                             [ 60%]
+tests/test_token_tracker.py::test_empty_summary PASSED                           [ 62%]
+tests/test_token_tracker.py::test_reset PASSED                                   [ 65%]
+tests/test_tools.py::TestCalculator::test_basic_addition PASSED                  [ 67%]
+tests/test_tools.py::TestCalculator::test_complex_expression PASSED              [ 70%]
+tests/test_tools.py::TestCalculator::test_power PASSED                           [ 72%]
+tests/test_tools.py::TestCalculator::test_invalid_characters PASSED              [ 75%]
+tests/test_tools.py::TestCalculator::test_division_by_zero PASSED                [ 77%]
+tests/test_tools.py::TestGetTime::test_returns_time_string PASSED                [ 80%]
+tests/test_tools.py::TestGetSystemInfo::test_returns_system_info PASSED          [ 82%]
+tests/test_tools.py::TestToolRegistry::test_all_tools_have_schema PASSED         [ 85%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_all PASSED          [ 87%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_selected PASSED     [ 90%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_unknown_ignored PASSED [ 92%]
+tests/test_tools.py::test_execute_unknown_tool PASSED                            [ 95%]
+tests/test_tools.py::test_execute_calculator_tool PASSED                         [ 97%]
+tests/test_tools.py::test_execute_tool_with_bad_args PASSED                      [100%]
+
+================================== 40 passed in 2.28s ==================================
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ pytest -v --cov=ai_agent_starter^C
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ pytest -v --cov=ai_agent_starter
+================================= test session starts ==================================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0 -- /workspaces/ai-agent-starter/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /workspaces/ai-agent-starter
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0, anyio-4.14.2, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 40 items                                                                     
+
+tests/test_api.py::TestHealthEndpoint::test_health PASSED                        [  2%]
+tests/test_api.py::TestHealthEndpoint::test_openapi_docs_available PASSED        [  5%]
+tests/test_api.py::TestChatEndpoint::test_chat_basic PASSED                      [  7%]
+tests/test_api.py::TestChatEndpoint::test_chat_empty_messages_rejected PASSED    [ 10%]
+tests/test_api.py::TestChatEndpoint::test_chat_invalid_temperature PASSED        [ 12%]
+tests/test_api.py::TestCostEndpoint::test_cost_summary PASSED                    [ 15%]
+tests/test_api.py::TestStructuredEndpoint::test_code_review_endpoint PASSED      [ 17%]
+tests/test_api.py::TestStructuredEndpoint::test_smart_chat_endpoint PASSED       [ 20%]
+tests/test_config.py::test_settings_defaults PASSED                              [ 22%]
+tests/test_config.py::test_settings_pricing PASSED                               [ 25%]
+tests/test_config.py::test_settings_validation PASSED                            [ 27%]
+tests/test_config.py::test_get_settings_cached PASSED                            [ 30%]
+tests/test_llm_client.py::TestCostCalculation::test_cost_calc_known_model PASSED [ 32%]
+tests/test_llm_client.py::TestCostCalculation::test_cost_calc_unknown_model PASSED [ 35%]
+tests/test_llm_client.py::TestChat::test_chat_basic PASSED                       [ 37%]
+tests/test_llm_client.py::TestChat::test_chat_with_system_message PASSED         [ 40%]
+tests/test_llm_client.py::TestChatWithTools::test_no_tool_call_needed PASSED     [ 42%]
+tests/test_llm_client.py::TestChatWithTools::test_tool_call_executed PASSED      [ 45%]
+tests/test_llm_client.py::TestChatWithTools::test_max_turns_reached PASSED       [ 47%]
+tests/test_llm_client.py::TestStructuredChat::test_code_review_structured PASSED [ 50%]
+tests/test_llm_client.py::TestMessageConversion::test_to_sdk_messages PASSED     [ 52%]
+tests/test_token_tracker.py::test_record_and_summary PASSED                      [ 55%]
+tests/test_token_tracker.py::test_multiple_records PASSED                        [ 57%]
+tests/test_token_tracker.py::test_persistence PASSED                             [ 60%]
+tests/test_token_tracker.py::test_empty_summary PASSED                           [ 62%]
+tests/test_token_tracker.py::test_reset PASSED                                   [ 65%]
+tests/test_tools.py::TestCalculator::test_basic_addition PASSED                  [ 67%]
+tests/test_tools.py::TestCalculator::test_complex_expression PASSED              [ 70%]
+tests/test_tools.py::TestCalculator::test_power PASSED                           [ 72%]
+tests/test_tools.py::TestCalculator::test_invalid_characters PASSED              [ 75%]
+tests/test_tools.py::TestCalculator::test_division_by_zero PASSED                [ 77%]
+tests/test_tools.py::TestGetTime::test_returns_time_string PASSED                [ 80%]
+tests/test_tools.py::TestGetSystemInfo::test_returns_system_info PASSED          [ 82%]
+tests/test_tools.py::TestToolRegistry::test_all_tools_have_schema PASSED         [ 85%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_all PASSED          [ 87%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_selected PASSED     [ 90%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_unknown_ignored PASSED [ 92%]
+tests/test_tools.py::test_execute_unknown_tool PASSED                            [ 95%]
+tests/test_tools.py::test_execute_calculator_tool PASSED                         [ 97%]
+tests/test_tools.py::test_execute_tool_with_bad_args PASSED                      [100%]
+
+==================================== tests coverage ====================================
+___________________ coverage: platform linux, python 3.12.13-final-0 ___________________
+
+Name                                             Stmts   Miss  Cover
+--------------------------------------------------------------------
+src/ai_agent_starter/__init__.py                     1      0   100%
+src/ai_agent_starter/api/__init__.py                 0      0   100%
+src/ai_agent_starter/api/routes_chat.py             14      4    71%
+src/ai_agent_starter/api/routes_structured.py       36      8    78%
+src/ai_agent_starter/api/routes_tools.py            14      7    50%
+src/ai_agent_starter/config.py                      26      0   100%
+src/ai_agent_starter/main.py                        31      4    87%
+src/ai_agent_starter/models/__init__.py              0      0   100%
+src/ai_agent_starter/models/schemas.py              79      0   100%
+src/ai_agent_starter/services/__init__.py            0      0   100%
+src/ai_agent_starter/services/llm_client.py        119     12    90%
+src/ai_agent_starter/services/token_tracker.py      62      3    95%
+src/ai_agent_starter/services/tools.py              60     20    67%
+--------------------------------------------------------------------
+TOTAL                                              442     58    87%
+================================== 40 passed in 5.54s ==================================
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ pytest tests/test_tools.py -v
+================================= test session starts ==================================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0 -- /workspaces/ai-agent-starter/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /workspaces/ai-agent-starter
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.14.2, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 14 items                                                                     
+
+tests/test_tools.py::TestCalculator::test_basic_addition PASSED                  [  7%]
+tests/test_tools.py::TestCalculator::test_complex_expression PASSED              [ 14%]
+tests/test_tools.py::TestCalculator::test_power PASSED                           [ 21%]
+tests/test_tools.py::TestCalculator::test_invalid_characters PASSED              [ 28%]
+tests/test_tools.py::TestCalculator::test_division_by_zero PASSED                [ 35%]
+tests/test_tools.py::TestGetTime::test_returns_time_string PASSED                [ 42%]
+tests/test_tools.py::TestGetSystemInfo::test_returns_system_info PASSED          [ 50%]
+tests/test_tools.py::TestToolRegistry::test_all_tools_have_schema PASSED         [ 57%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_all PASSED          [ 64%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_selected PASSED     [ 71%]
+tests/test_tools.py::TestToolRegistry::test_get_tool_schemas_unknown_ignored PASSED [ 78%]
+tests/test_tools.py::test_execute_unknown_tool PASSED                            [ 85%]
+tests/test_tools.py::test_execute_calculator_tool PASSED                         [ 92%]
+tests/test_tools.py::test_execute_tool_with_bad_args PASSED                      [100%]
+
+================================== 14 passed in 0.13s ==================================
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ uvicorn ai_agent_starter.main:app --reload --host 0.0.0.0 --port 8000
+INFO:     Will watch for changes in these directories: ['/workspaces/ai-agent-starter']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [16662] using WatchFiles
+INFO:     Started server process [16671]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 32 条
+INFO:     Application startup complete.
+INFO:     45.196.221.22:0 - "GET / HTTP/1.1" 200 OK
+INFO:     45.196.221.22:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     45.196.221.22:0 - "GET / HTTP/1.1" 200 OK
+INFO:     45.196.221.22:0 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37290 - "POST /api/agent/tool-call HTTP/1.1" 200 OK
+^CINFO:     Shutting down
+source /workspaces/ai-agent-starter/.venv/bin/activate
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [16671]
+INFO:     Stopping reloader process [16662]
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ source /workspaces/ai-agent-starter/.venv/bin/activa(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ uvicorn ai_agent_starter.main:app --reload --host 0.0.0.0 --port 8000^Cces/ai-agent-starter/.venv/bin/activateter (main) $ 
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ uvicorn ai_agent_starter.main:app --reload --host 0.0.0.0 --port 8000
+INFO:     Will watch for changes in these directories: ['/workspaces/ai-agent-starter']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [21008] using WatchFiles
+INFO:     Started server process [21010]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     45.196.221.22:0 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38832 - "GET /api/cost/summary HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21010]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [23346]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23346]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [23408]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23408]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [23456]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23456]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [23499]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23499]
+INFO:     Started server process [23607]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23607]
+INFO:     Started server process [23699]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23699]
+INFO:     Started server process [23756]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23756]
+INFO:     Started server process [23808]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23808]
+INFO:     Started server process [23878]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23878]
+INFO:     Started server process [24103]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24103]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [24202]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24202]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [24245]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24245]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [24285]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24285]
+INFO:     Started server process [24308]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24308]
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Started server process [24364]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24364]
+INFO:     Started server process [24408]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/01_basic_chat.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24408]
+INFO:     Started server process [24433]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 34 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24433]
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Started server process [28505]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28505]
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Started server process [28553]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28553]
+INFO:     Started server process [28647]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28647]
+INFO:     Started server process [28703]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28703]
+INFO:     Started server process [28809]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28809]
+INFO:     Started server process [28853]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28853]
+INFO:     Started server process [28923]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 38 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/02_function_calling.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28923]
+INFO:     Started server process [34856]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 49 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/ai_agent_starter/services/llm_client.py', 'tests/test_llm_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [34856]
+INFO:     Started server process [46407]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 49 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/03_structured_output.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46407]
+INFO:     Started server process [47165]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 58 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/ai_agent_starter/services/llm_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [47165]
+INFO:     Started server process [48956]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 67 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_llm_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48956]
+INFO:     Started server process [49063]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 67 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/03_structured_output.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49063]
+INFO:     Started server process [49171]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 67 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/ai_agent_starter/services/llm_client.py', 'tests/test_llm_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49171]
+INFO:     Started server process [49824]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 68 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/ai_agent_starter/models/schemas.py', 'tests/test_llm_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49824]
+INFO:     Started server process [51420]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 83 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/03_structured_output.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [51420]
+INFO:     Started server process [53316]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 100 条
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'examples/03_structured_output.py', 'src/ai_agent_starter/services/llm_client.py', 'src/ai_agent_starter/models/schemas.py', 'tests/test_llm_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[关闭] 应用已停止
+INFO:     Application shutdown complete.
+INFO:     Finished server process [53316]
+INFO:     Started server process [59668]
+INFO:     Waiting for application startup.
+[启动] AI Agent Starter v0.1.0
+[启动] Token 追踪器已加载，历史记录 114 条
+INFO:     Application startup complete.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:52578 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:52680 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
