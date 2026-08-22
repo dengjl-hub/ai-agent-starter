@@ -1,0 +1,17 @@
+@dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ uv pip install -e ".[dev]"
+bash: uv: command not found
+@dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ pip install -e ".[dev]"
+bash: pip: command not found
+@dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ curl -LsSf https://astral.sh/uv/install.sh | sh
+downloading uv 0.12.5 x86_64-unknown-linux-musl-static
+installing to /home/vscode/.local/bin
+  uv
+  uvx
+everything's installed!
+@dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ export PATH="$HOME/.local/bin:$PATH"
+@dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+@dengjl-hub ➜ /workspaces/ai-agent-starter (main) $  source /workspaces/ai-agent-starter/.venv/bin/activate
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ cat ~/.bash_history
+cat: /home/vscode/.bash_history: No such file or directory
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ 
