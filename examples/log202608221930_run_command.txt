@@ -1,0 +1,708 @@
+📎 工具返回: 当前时间: 2026-08-22 09:10:27 Saturday
+🤖 思考: 根据查询，当前时间是 **2026年8月22日**。
+
+关于您提到的 **2026年7月广西洪涝灾害**，由于我的工具没有查询历史灾害事件的功能，我无法提供该事件的详细数据。不过，我可以为您提供以下帮助：
+
+1. **查询广西当前天气** - 我可以帮您查询广西主要城市（如南宁、桂林、柳州等）当前的天气情况，看看是否有相关影响。
+
+2. **提供一般性信息** - 如果您需要了解广西洪涝灾害的一般背景知识，我可以为您说明。
+
+请问您具体需要哪方面的帮助呢？比如：
+- 是否需要我查询广西某个城市**当前的天气**？
+- 还是您想了解其他信息？
+
+请告诉我您的具体需求，我会尽力协助！
+
+✅ 最终回答: 根据查询，当前时间是 **2026年8月22日**。
+
+关于您提到的 **2026年7月广西洪涝灾害**，由于我的工具没有查询历史灾害事件的功能，我无法提供该事件的详细数据。不过，我可以为您提供以下帮助：
+
+1. **查询广西当前天气** - 我可以帮您查询广西主要城市（如南宁、桂林、柳州等）当前的天气情况，看看是否有相关影响。
+
+2. **提供一般性信息** - 如果您需要了解广西洪涝灾害的一般背景知识，我可以为您说明。
+
+请问您具体需要哪方面的帮助呢？比如：
+- 是否需要我查询广西某个城市**当前的天气**？
+- 还是您想了解其他信息？
+
+请告诉我您的具体需求，我会尽力协助！
+💰 模型=deepseek-chat, tokens=1617, cost=$0.000708
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+Traceback (most recent call last):
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 114, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 69, in main
+    result: CodeReviewResult = await client.code_review(SAMPLE_CODE, "python")
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 368, in code_review
+    return await self.structured_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 323, in structured_chat
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 2907, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1995, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1780, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'This response_format type is unavailable now', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+Traceback (most recent call last):
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 114, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 69, in main
+    result: CodeReviewResult = await client.code_review(SAMPLE_CODE, "python")
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 368, in code_review
+    return await self.structured_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 323, in structured_chat
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 2907, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1995, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1780, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'This response_format type is unavailable now', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}
+(ai-agent-starter) @dengjl-hub^C /workspaces/ai-agent-starter (main) $ 
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+Traceback (most recent call last):
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 114, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 69, in main
+    result: CodeReviewResult = await client.code_review(SAMPLE_CODE, "python")
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 355, in code_review
+    return await self.structured_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 334, in structured_chat
+    return response_model.model_validate(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/pydantic/main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 6 validation errors for CodeReviewResult
+summary
+  Field required [type=missing, input_value={'issues': [{'line': 3, '...'result' is defined."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.0.description
+  Field required [type=missing, input_value={'line': 3, 'severity': '... name = %s", (users,))'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.1.description
+  Field required [type=missing, input_value={'line': 6, 'severity': '...nd handle or log them.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.2.description
+  Field required [type=missing, input_value={'line': 9, 'severity': '... lst is None: lst = []'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.3.description
+  Field required [type=missing, input_value={'line': 12, 'severity': ... 'Remove it or use it.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.4.description
+  Field required [type=missing, input_value={'line': 14, 'severity': ...e 'result' is defined."}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ ^C
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+Traceback (most recent call last):
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 114, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 69, in main
+    result: CodeReviewResult = await client.code_review(SAMPLE_CODE, "python")
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 355, in code_review
+    return await self.structured_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/src/ai_agent_starter/services/llm_client.py", line 334, in structured_chat
+    return response_model.model_validate(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/pydantic/main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 5 validation errors for CodeReviewResult
+issues.0.category
+  Field required [type=missing, input_value={'line': 3, 'severity': '... name = %s", (users,))'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.1.category
+  Field required [type=missing, input_value={'line': 6, 'severity': '... handle appropriately.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.2.category
+  Field required [type=missing, input_value={'line': 9, 'severity': '... lst is None: lst = []'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.3.category
+  Field required [type=missing, input_value={'line': 12, 'severity': ... 'Remove it or use it.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+issues.4.category
+  Field required [type=missing, input_value={'line': 1, 'severity': '...riate data structures."}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+
+审查总结: The code has critical security and bug issues, plus style and best practice improvements.
+代码评分: 100/100
+                                                 发现的问题                                                 
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 严重程度 ┃ 类别         ┃ 行号   ┃ 问题描述                          ┃ 修复建议                          ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ critical │ security     │ 3      │ SQL injection vulnerability:      │ Use parameterized queries (e.g.,  │
+│          │              │        │ string concatenation of user      │ cursor.execute('SELECT * FROM     │
+│          │              │        │ input into SQL query.             │ users WHERE name = %s',           │
+│          │              │        │                                   │ (users,))).                       │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ critical │ bug          │ 8      │ Bare except catches all           │ Catch specific exceptions (e.g.,  │
+│          │              │        │ exceptions, including             │ ZeroDivisionError) and handle     │
+│          │              │        │ KeyboardInterrupt and SystemExit, │ appropriately. Initialize result  │
+│          │              │        │ and hides errors. Also, if        │ before try block.                 │
+│          │              │        │ len(users) is 0,                  │                                   │
+│          │              │        │ ZeroDivisionError is caught and   │                                   │
+│          │              │        │ result remains unbound, causing   │                                   │
+│          │              │        │ UnboundLocalError when returning. │                                   │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ high     │ bug          │ 12     │ Mutable default argument (list)   │ Use None as default and create a  │
+│          │              │        │ is shared across calls, leading   │ new list inside the function.     │
+│          │              │        │ to unexpected behavior.           │                                   │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ low      │ style        │ 15     │ Unused variable 'unused_var'.     │ Remove it or use it.              │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ info     │ best_practi… │ 1      │ Function name 'process_users' is  │ Rename to something like          │
+│          │              │        │ vague; consider a more            │ 'get_user_by_name' or             │
+│          │              │        │ descriptive name.                 │ 'process_user_data'.              │
+└──────────┴──────────────┴────────┴───────────────────────────────────┴───────────────────────────────────┘
+
+原始 JSON 输出（前500字符）:
+Traceback (most recent call last):
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 114, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 110, in main
+    console.print_json(json_str[:500] + ("..." if len(json_str) > 500 else ""))
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/rich/console.py", line 1806, in print_json
+    json_renderable = JSON(
+                      ^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/rich/json.py", line 37, in __init__
+    data = loads(json)
+           ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 11 column 23 (char 469)
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ ^C
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+
+审查总结: The code has several issues including SQL injection, bare except, mutable default argument, unused
+variable, and potential unbound variable.
+代码评分: 100/100
+                                                 发现的问题                                                 
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 严重程度 ┃ 类别         ┃ 行号   ┃ 问题描述                          ┃ 修复建议                          ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ critical │ security     │ 3      │ SQL injection vulnerability:      │ Use parameterized queries (e.g.,  │
+│          │              │        │ directly concatenating user input │ cursor.execute('SELECT * FROM     │
+│          │              │        │ into SQL query string.            │ users WHERE name = %s',           │
+│          │              │        │                                   │ (users,))).                       │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ critical │ bug          │ 6      │ Bare except catches all           │ Catch specific exceptions (e.g.,  │
+│          │              │        │ exceptions, including             │ ZeroDivisionError) and handle     │
+│          │              │        │ KeyboardInterrupt and SystemExit, │ appropriately. Initialize result  │
+│          │              │        │ and hides errors. Also, if        │ before try block.                 │
+│          │              │        │ len(users) is 0,                  │                                   │
+│          │              │        │ ZeroDivisionError is caught and   │                                   │
+│          │              │        │ result remains unbound, causing   │                                   │
+│          │              │        │ UnboundLocalError when returned.  │                                   │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ medium   │ best_practi… │ 10     │ Mutable default argument (list)   │ Use None as default and create a  │
+│          │              │        │ is shared across all calls,       │ new list inside the function.     │
+│          │              │        │ leading to unexpected behavior.   │                                   │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ low      │ style        │ 13     │ Unused variable 'unused_var'.     │ Remove it or use it.              │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ info     │ performance  │ 3      │ String concatenation in SQL query │ Use parameterized queries.        │
+│          │              │        │ is inefficient and unsafe;        │                                   │
+│          │              │        │ parameterized queries are also    │                                   │
+│          │              │        │ faster.                           │                                   │
+└──────────┴──────────────┴────────┴───────────────────────────────────┴───────────────────────────────────┘
+
+原始 JSON 输出（前500字符）:
+Traceback (most recent call last):
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 114, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspaces/ai-agent-starter/examples/03_structured_output.py", line 110, in main
+    console.print_json(json_str[:500] + ("..." if len(json_str) > 500 else ""))
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/rich/console.py", line 1806, in print_json
+    json_renderable = JSON(
+                      ^^^^^
+  File "/workspaces/ai-agent-starter/.venv/lib/python3.12/site-packages/rich/json.py", line 37, in __init__
+    data = loads(json)
+           ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 10 column 21 (char 402)
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ ^C
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/03_structured_output.py
+╭─────────────────────────────────╮
+│ 示例 03：结构化输出（代码审查） │
+╰─────────────────────────────────╯
+待审查代码:
+
+def process_users(users):
+    # SQL 注入风险
+    query = "SELECT * FROM users WHERE name = '" + users + "'"
+    cursor.execute(query)
+
+    # 裸 except
+    try:
+        result = 100 / len(users)
+    except:
+        pass
+
+    # 可变默认参数
+    def add_item(item, lst=[]):
+        lst.append(item)
+        return lst
+
+    # 未使用的变量
+    unused_var = 42
+
+    return result
+
+
+正在调用 LLM 进行审查...
+
+审查总结: The code has several issues including a critical SQL injection vulnerability, a bare except 
+clause, a mutable default argument, an unused variable, and a vague function name.
+代码评分: 100/100
+                                                 发现的问题                                                 
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 严重程度 ┃ 类别         ┃ 行号   ┃ 问题描述                          ┃ 修复建议                          ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ critical │ security     │ 3      │ SQL injection vulnerability:      │ Use parameterized queries (e.g.,  │
+│          │              │        │ concatenating user input directly │ cursor.execute('SELECT * FROM     │
+│          │              │        │ into SQL query.                   │ users WHERE name = %s',           │
+│          │              │        │                                   │ (users,))).                       │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ high     │ bug          │ 6      │ Bare except catches all           │ Catch specific exceptions (e.g.,  │
+│          │              │        │ exceptions, including             │ ZeroDivisionError) and handle     │
+│          │              │        │ KeyboardInterrupt and SystemExit, │ appropriately.                    │
+│          │              │        │ and hides errors.                 │                                   │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ high     │ bug          │ 10     │ Mutable default argument 'lst=[]' │ Use None as default and           │
+│          │              │        │ is shared across calls, causing   │ initialize inside function: def   │
+│          │              │        │ unexpected behavior.              │ add_item(item, lst=None): if lst  │
+│          │              │        │                                   │ is None: lst = []                 │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ low      │ style        │ 13     │ Unused variable 'unused_var'.     │ Remove the variable or use it if  │
+│          │              │        │                                   │ needed.                           │
+├──────────┼──────────────┼────────┼───────────────────────────────────┼───────────────────────────────────┤
+│ low      │ best_practi… │ 1      │ Function name 'process_users' is  │ Rename to something like          │
+│          │              │        │ vague; consider a more            │ 'process_user_names' or           │
+│          │              │        │ descriptive name.                 │ 'fetch_user_by_name'.             │
+└──────────┴──────────────┴────────┴───────────────────────────────────┴───────────────────────────────────┘
+
+原始 JSON 输出（前500字符）:
+{
+  "summary": "The code has several issues including a critical SQL injection vulnerability, a bare except 
+clause, a mutable default argument, an unused variable, and a vague function name.",
+  "score": 100,
+  "issues": [
+    {
+      "severity": "critical",
+      "category": "security",
+      "line": 3,
+      "description": "SQL injection vulnerability: concatenating user input directly into SQL query.",
+      "suggestion": "Use parameterized queries (e.g., cursor.execute('SELECT * FROM users W...
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/04_prompt_patterns.py
+╭──────────────────────────────────────╮
+│ 示例 04：Prompt Engineering 五种模式 │
+╰──────────────────────────────────────╯
+
+--- 模式1: Role Prompting（角色设定） ---
+我来用一个餐厅的比喻解释CAP定理。
+
+想象你经营着一家连锁餐厅，有三家分店（A、B、C），它们共同维护一份菜单（数据）。
+
+**C（一致性）**：就像所有分店的菜单必须完全一样。如果A店改了菜价，B、C店必须立刻同步，否则顾客在A店看到鱼香
+肉丝38元，到B店却要42元，就会混乱。
+
+**A（可用性）**：就像餐厅必须随时能接待顾客。哪怕B店网络断了，顾客敲门时也得能点菜，不能让人吃闭门羹。
+
+**P（分区容错性）**：就像三家分店之间的电话线路偶尔会断。这是现实世界无法避免的——网络总会出问题。
+
+**CAP定理的核心结论是：当电话线路断了（发生分区）时，你必须在“让所有店菜单一致”和“让每家店都能继续营业”之间
+二选一。**
+
+- 
+**选C放弃A**：B店网络断了，就干脆关门不营业，等线路恢复、菜单同步后再开门。这样保证菜单永远一致，但顾客会吃
+闭门羹。
+- 
+**选A放弃C**：B店网络断了，照样营业，但先用自己的旧菜单（可能价格过时）。顾客能点菜，但可能被多收或少收钱，
+等线路恢复后再补同步。
+
+**为什么不能同时选C和A？** 
+因为当线路断了，你无法既让B店立刻响应顾客（A），又保证它用的是最新菜单（C）——除非你让B店等线路恢复（牺牲A）
+。
+
+**现实中的选择**：
+- 银行转账系统：选C，宁可交易失败也不能账目不一致（钱不能凭空多或少）。
+- 社交平台点赞数：选A，点赞数稍微延迟显示没关系，但用户必须能随时刷出页面。
+- 购物车系统：通常选A，允许短暂不一致（比如库存显示有货但实际没了），但保证用户能下单。
+
+**一句话总结**：CAP定理就是告诉你——网络故障时，你必须在“准确”和“及时”之间做个取舍，没有完美方案。就像餐厅线
+路断了，你不可能既让B店正常营业，又保证它菜单和A店完全同步。
+tokens=515, cost=$0.000537
+
+--- 模式2: Few-shot Prompting（少样本示例） ---
+bug报告
+tokens=98, cost=$0.000028
+
+--- 模式3: Chain of Thought（思维链） ---
+好的，我们一步步来分析这个问题。  
+
+**第一步：确定每个管子的工作效率**  
+我们通常把整个水池的容量看作单位“1”。  
+- A管单独注满需要6小时，所以A管每小时注水量是 \( \frac{1}{6} \) 水池。  
+- B管单独注满需要8小时，所以B管每小时注水量是 \( \frac{1}{8} \) 水池。  
+- C管是出水管，单独放完需要12小时，所以C管每小时放水量是 \( \frac{1}{12} \) 水池。  
+
+**第二步：计算三管同时打开时的净注水速度**  
+进水管增加水量，出水管减少水量，所以净注水速度为：  
+[
+\frac{1}{6} + \frac{1}{8} - \frac{1}{12}
+\]  
+
+先通分，6、8、12的最小公倍数是24：  
+[
+\frac{1}{6} = \frac{4}{24}, \quad \frac{1}{8} = \frac{3}{24}, \quad \frac{1}{12} = \frac{2}{24}
+\]  
+所以：  
+[
+\frac{4}{24} + \frac{3}{24} - \frac{2}{24} = \frac{5}{24}
+\]  
+也就是说，三管同时打开时，每小时净注水量是水池的 \( \frac{5}{24} \)。  
+
+**第三步：计算注满所需时间**  
+如果每小时注满 \( \frac{5}{24} \)，那么注满整个水池（单位1）所需时间为：  
+[
+1 \div \frac{5}{24} = \frac{24}{5} = 4.8 \text{小时}
+\]  
+
+**第四步：换算成小时和分钟**  
+0.8小时 = 0.8 × 60 = 48分钟。  
+所以总时间是4小时48分钟。  
+
+**最终答案：**  
+三管同时打开，需要 **4小时48分钟** 才能注满水池。
+tokens=517, cost=$0.000509
+
+--- 模式4: Self-Consistency（自洽性，多次采样取一致） ---
+  第1次回答: 8只）死了。  
+所以“还剩几只羊”指的是活着的羊，那就是那9只。
+
+答案：还剩 **9只** 羊。
+  第2次回答: 活了下来，其余的都死了。
+
+所以，答案就是**9只**。
+
+---
+
+**最终答案：还剩9只羊。**
+  第3次回答: 题问的是“还剩几只羊”，而“还剩”指的是活着的羊，所以答案就是9只。  
+
+最终答案：**9只**。
+自洽性思路：多次采样，取多数一致的答案。生产中可用代码解析最终答案并投票。
+
+--- 模式5: ReAct（推理+行动，Agent 的核心模式） ---
+Thought: 用户问总路程，需要分别计算两段路程再相加。
+Action: calculate[60*2.5 + 80*1.5]
+Observation: 150 + 120 = 270
+Thought: 我已经知道答案
+Final Answer: 总路程是270公里。
+tokens=180, cost=$0.000100
+
+提示: ReAct 模式就是 Function Calling 的前身。现代 Agent 框架把 Thought/Action/Observation 
+循环自动化了，你在示例02中看到的就是它的工程实现。
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-s(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-s
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ python examples/05_cost_control.py
+╭───────────────────────────────╮
+│ 示例 05：成本控制（降本增效） │
+╰───────────────────────────────╯
+
+=== 1. 模型路由：不同问题用不同模型 ===
+                                              模型路由效果对比                                              
+┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ 问题类型   ┃ 问题                                     ┃ 路由到的模型         ┃ Token 数   ┃ 成本(USD)    ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ 简单问题   │ 你好，今天天气不错                       │ deepseek-chat        │ 68         │ $0.000067    │
+├────────────┼──────────────────────────────────────────┼──────────────────────┼────────────┼──────────────┤
+│ 简单问题   │ 把这句话翻译成英文：我喜欢编程           │ deepseek-chat        │ 16         │ $0.000008    │
+├────────────┼──────────────────────────────────────────┼──────────────────────┼────────────┼──────────────┤
+│ 复杂问题   │ 请解释 Redis 的 RDB 和 AOF               │ deepseek-reasoner    │ 2005       │ $0.004217    │
+│            │ 持久化机制的区别，以及各自的优缺         │                      │            │              │
+├────────────┼──────────────────────────────────────────┼──────────────────────┼────────────┼──────────────┤
+│ 复杂问题   │ 设计一个秒杀系统的架构，需要考虑超卖、 … │ deepseek-reasoner    │ 2149       │ $0.004541    │
+└────────────┴──────────────────────────────────────────┴──────────────────────┴────────────┴──────────────┘
+
+=== 2. 成本汇总 ===
+总调用次数: 129
+总 Token 数: 34724
+总成本: $0.023054
+                               按模型统计                               
+┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━┓
+┃ 模型              ┃ 调用次数 ┃ 输入 Tokens ┃ 输出 Tokens ┃ 成本(USD) ┃
+┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━┩
+│ test-model        │ 85       │ 4520        │ 1610        │ $0.000000 │
+│ deepseek-chat     │ 42       │ 15165       │ 9275        │ $0.014296 │
+│ deepseek-reasoner │ 2        │ 207         │ 3947        │ $0.008758 │
+└───────────────────┴──────────┴─────────────┴─────────────┴───────────┘
+
+=== 3. 生产环境成本优化手段 ===
+  • 模型路由: 简单问题用小模型(deepseek-chat)，复杂问题用强模型(deepseek-reasoner)，可省 50%+ 成本
+  • Prompt 缓存: DeepSeek 支持 context caching，重复的 system prompt 命中缓存部分输入价格打 1 折
+  • 语义缓存: 对高频重复问题直接返回缓存答案，不调用 LLM（如 GPTCache）
+  • 流式输出: 提升用户体验，不省成本但降低超时重试带来的浪费
+  • Batch API: OpenAI/DeepSeek 都有 Batch API，非实时任务用批量接口可省 50%
+  • 压缩上下文: 用摘要替代长对话历史，减少 prompt tokens
+  • 设置 max_tokens: 防止 LLM 无限输出导致成本失控
+  • 监控告警: 对 Token 用量设置日预算上限，超阈值告警（本项目的 TokenTracker 就是基础版）
+
+💡 面试话术: 
+'我在项目中设计了模型路由策略，通过分类器判断问题复杂度，简单请求走轻量模型，复杂请求走推理模型，结合 Prompt
+缓存和语义缓存，在保证回答质量的前提下将平均 Token 成本降低了 XX%。'
+(ai-agent-starter) @dengjl-hub ➜ /workspaces/ai-agent-starter (main) $ 
